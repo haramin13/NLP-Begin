@@ -1,0 +1,8 @@
+Pipeline 1 bài toán DL nói chung
+
+1: Đánh giá bài toán (bài toán là gì, tại sao cần giải quyết)
+2: Phân tích dữ liệu gốc và gán nhãn (đánh giá tổng quan dữ liệu)
+3: Tiền xử lý dữ liệu
+4: Xây dựng và huấn luyện mô hình
+5: Đánh giá mô hình
+6: Deploy mô hình

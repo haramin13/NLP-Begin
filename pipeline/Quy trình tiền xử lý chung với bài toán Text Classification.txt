@@ -1,0 +1,29 @@
+Quy trình chung với bài toán Text Classification:
+(Mục tiêu -> chuẩn hóa dữ liệu và loại bỏ các thành phần không có ý nghĩa)
+    1: Xóa HTML code, URL (nếu có).
+        *Trong bài toán trích xuất thông tin thì URL có thể được giữ lại 
+    2: Chuẩn hóa bảng mã Unicode (đưa về chuẩn Unicode dựng sẵn - phổ biến hơn so với chuẩn Unicode tổ hợp)
+    3: Chuẩn hóa kiểu gõ dấu (Mới về Cũ: Tham khảo "Quy tắc đặt dấu thanh trong chữ quốc ngữ" trên Wikipedia)
+    4: Tách từ trong tiếng Việt (sử dụng thư viện tách từ như pyvi, underthesea, vncorenlp,…)
+        *Word Segmentation
+    5: Đưa về dạng viết thường (lower)
+        *Có thể có
+    6: Xóa các ký tự đặc biệt
+        *Làm rõ định nghĩa kí tự đặc biệt
+    7: Loại bỏ Stopword (Các từ xuất hiện nhiều và không có nhiều ý nghĩa)
+        *Cân nhắc, do sử dụng DL nên có thể chạy trước mô hình với toàn bộ dữ liệu và visualized để xem mức độ ảnh hưởng của các từ tới bài toán
+
+Tham khảo: https://blog.luyencode.net/phan-loai-van-ban-tieng-viet/
+
+******************************************************************
+Nội dung cần thực hiện
+
+*Trích xuất những thông tin trong bài post
+*Chủ đề bài đăng
+    1: Thông tin khuyến mãi (chung, cụ thể từng sản phẩm)
+    2: Khác
+    3: Khai trương
+    4: Quảng bá
+    - Xem xét 1 bài có thể nằm trong nhiều chủ đề hay không
+    - Làm rõ output là MultiClass vs MultiLabel
+
