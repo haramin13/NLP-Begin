@@ -173,16 +173,17 @@ def is_valid_vietnam_word(word):
     return True
 
 
-def chuan_hoa_dau_cau_tieng_viet(sentence):
+def chuan_hoa_dau_cau_tieng_viet(sentence, bool=False):
     """
         Chuyển câu tiếng việt về chuẩn gõ dấu kiểu cũ.
         :param sentence:
         :return:
         """
-    # sentence = sentence.lower()
+    if bool:
+        sentence = sentence.lower()
     words = sentence.split()
     for index, word in enumerate(words):
-        cw = re.sub(r'(^\p{P}*)([p{L}.]*\p{L}+)(\p{P}*$)', r'\1/\2/\3', word).split('/')
+        cw = re.sub(r'(^\p{P}*)([p{L}.]*\p{L}+)(\p{P}*$)', r'\1//\2//\3', word).split('//')
         # print(cw)
         if len(cw) == 3:
             cw[1] = chuan_hoa_dau_tu_tieng_viet(cw[1])
@@ -194,8 +195,8 @@ def chuan_hoa_dau_cau_tieng_viet(sentence):
     End section: Chuyển câu văn về cách gõ dấu kiểu cũ: dùng òa úy thay oà uý
     Xem tại đây: https://vi.wikipedia.org/wiki/Quy_tắc_đặt_dấu_thanh_trong_chữ_quốc_ngữ
 """
-if __name__ == '__main__':
-    print(chuan_hoa_dau_cau_tieng_viet('anh hoà, đang làm.. gì'))
+# if __name__ == '__main__':
+#     print(chuan_hoa_dau_cau_tieng_viet('anh hoà, đang làm.. gì 20/10/2999'))
     # f = open('/home/lap60313/data/corpus-full.txt', encoding='utf8')
     # sentence = f.readline()
     # current_line = 0

@@ -8,7 +8,9 @@ def remove_html(txt):
 
 # Xoa URL
 def remove_url(txt):
-    return re.sub(r'https\S+', '', txt, flags=re.MULTILINE)
+    txt = re.sub(r'https\S+', '', txt, flags=re.MULTILINE)
+    txt = re.sub(r'http\S+', '', txt, flags=re.MULTILINE)
+    return txt
 
 # Xoa emoji
 def remove_emoji(txt):
@@ -37,10 +39,30 @@ def remove_emoji_unicode_type(data):
                       "]+", re.UNICODE)
     return re.sub(emoj, '', data)
 
-# Xoa khoang trang thua
+# Xoa khoang trang thua (bao gom ca ky tu xuong dong)
 def remove_space(txt):
     return re.sub(r'\s+', ' ', txt).strip()
 
 # Xoa hashtag
 def remove_hashtag(txt):
     return re.sub("#[A-Za-z0-9_àáảãạâầấẩẫậăằắẳẵặèéẻẽẹêềếểễệđìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵÀÁẢÃẠÂẦẤẨẪẬĂẰẮẲẴẶÈÉẺẼẸÊỀẾỂỄỆĐÌÍỈĨỊÒÓỎÕỌÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴÂĂĐÔƠƯ]+","", txt)
+
+# Xoa cac phan spam trong bai dang
+def remove_spam(txt):
+    c = '---'
+    pattern = c + '.*'
+    txt = re.sub(pattern, '', txt)
+    # Xoa tu spam
+    txt = re.sub(r"Cẩm nang mua sắm Miền Bắc:", '', txt)
+    txt = re.sub(r"Cẩm nang mua sắm Miền Trung & Nam:", '', txt)
+    txt = re.sub(r"App Store:", '', txt)
+    txt = re.sub(r"Google Play:", '', txt)
+    return txt
+
+# Xoa cac ky tu dac biet va Stop words (tuy chinh theo dang du lieu ban dau)
+def remove_special_character(txt):
+    # Xoa dau ba cham
+    txt = re.sub(r'(\W)\1+', '', txt)
+    # Xoa dau gach noi
+    txt = re.sub(r'-', '', txt)
+    return txt
